@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace InterviewTask
@@ -21,12 +22,14 @@ namespace InterviewTask
 		[Header("Visual")]
 		[Space]
 		[SerializeField] private Transform _visualBody;
+		[SerializeField] private TextMeshPro _nameDisplay;
 
 		public Transform Body => _body;
 		public Transform Collisions => _collisions;
 		public Rigidbody2D Rigidbody => _rigidbody;
 
 		public Transform VisualBody => _visualBody;
+		public TextMeshPro NameDisplay => _nameDisplay;
 		#endregion
 
 		#region ITEntityData

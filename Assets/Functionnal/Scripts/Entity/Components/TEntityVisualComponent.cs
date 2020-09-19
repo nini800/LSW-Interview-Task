@@ -25,6 +25,20 @@ namespace InterviewTask
 			private TEntityVisualComponent _data;
 			public new TEntityVisualComponent Data => _data;
 			#endregion
+
+			#region Behaviour
+			public override void OnAwake()
+			{
+				HandleDisplayEntityName();
+			}
+			private void HandleDisplayEntityName()
+			{
+				if (References.NameDisplay != null)
+				{
+					References.NameDisplay.text = Master.EntityName;
+				}
+			}
+			#endregion
 		}
 	}
 }
