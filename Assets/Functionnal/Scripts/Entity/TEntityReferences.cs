@@ -20,18 +20,24 @@ namespace InterviewTask
 
 		[Header("Visual")]
 		[Space]
-		[SerializeField] private Transform _visual;
+		[SerializeField] private Transform _visualBody;
 
 		public Transform Body => _body;
 		public Transform Collisions => _collisions;
 		public Rigidbody2D Rigidbody => _rigidbody;
 
-		public Transform Visual => _visual;
+		public Transform VisualBody => _visualBody;
 		#endregion
 
 		#region ITEntityData
-		TEntity ITEntityData.Master => _master;
-		TEntityReferences ITEntityData.References => this;
+		public TEntity Master => _master;
+		public TEntityReferences References => this;
+
+		public TEntityControllerComponent.TEntityController Controller => _master.Controller;
+		public TEntityMovementsComponent.TEntityMovements Movements => _master.Movements;
+		public TEntityInteractionsComponent.TEntityInteractions Interactions => _master.Interactions;
+		public TEntityVisualComponent.TEntityVisual Visual => _master.Visual;
+		public TEntityAnimationsComponent.TEntityAnimations Animations => _master.Animations;
 		#endregion
 
 		#region Editor

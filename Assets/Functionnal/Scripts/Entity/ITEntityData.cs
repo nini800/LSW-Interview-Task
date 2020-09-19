@@ -8,5 +8,11 @@ namespace InterviewTask
 	{
 		TEntity Master { get; }
 		TEntityReferences References { get; }
+
+		TEntityControllerComponent.TEntityController Controller { get; }
+		TEntityMovementsComponent.TEntityMovements Movements { get; }
+		TEntityInteractionsComponent.TEntityInteractions Interactions { get; }
+		TEntityVisualComponent.TEntityVisual Visual { get; }
+		TEntityAnimationsComponent.TEntityAnimations Animations { get; }
 	}
 }
