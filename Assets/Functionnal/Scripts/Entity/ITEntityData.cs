@@ -14,5 +14,8 @@ namespace InterviewTask
 		TEntityInteractionsComponent.TEntityInteractions Interactions { get; }
 		TEntityVisualComponent.TEntityVisual Visual { get; }
 		TEntityAnimationsComponent.TEntityAnimations Animations { get; }
+
+		Vector2 Position { get; }
+		Vector2 Center { get; }
 	}
 }

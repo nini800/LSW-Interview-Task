@@ -38,6 +38,9 @@ namespace InterviewTask
 		public TEntityInteractionsComponent.TEntityInteractions Interactions => _master.Interactions;
 		public TEntityVisualComponent.TEntityVisual Visual => _master.Visual;
 		public TEntityAnimationsComponent.TEntityAnimations Animations => _master.Animations;
+
+		public Vector2 Position => _master.Position;
+		public Vector2 Center => _master.Center;
 		#endregion
 
 		#region Editor

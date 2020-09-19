@@ -10,6 +10,7 @@ namespace InterviewTask
 		[Header("Identity")]
 		[Space]
 		[SerializeField] private string _entityName;
+		[SerializeField] private float _height;
 
 		[Header("Components")]
 		[Space]
@@ -32,6 +33,7 @@ namespace InterviewTask
 		private TEntityAnimationsComponent.TEntityAnimations _animations;
 
 		public string EntityName => _entityName;
+		public float Height => _height;
 
 		public TEntityControllerComponent.TEntityController Controller => _controller;
 		public TEntityMovementsComponent.TEntityMovements Movements => _movements;
@@ -43,6 +45,9 @@ namespace InterviewTask
 		#region ITEntityData
 		public TEntity Master => this;
 		public TEntityReferences References => _references;
+
+		public Vector2 Position => _references.Body.position;
+		public Vector2 Center => _references.Body.position.ToV2().AddY(_height * 0.5f);
 		#endregion
 
 
