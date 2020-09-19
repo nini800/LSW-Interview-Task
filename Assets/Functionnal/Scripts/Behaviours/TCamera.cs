@@ -9,7 +9,8 @@ namespace InterviewTask
 	{
 		[Header("Parameters")]
 		[Space]
-		[SerializeField, Min(0f)] private float _cameraSmoothTime = 0.1f;
+		[SerializeField, Min(0f)] private float _cameraMovementSmoothTime = 0.1f;
+		[SerializeField, Min(0f)] private float _cameraZoomSmoothTime = 0.1f;
 		[SerializeField] private Vector2 _cameraZoomLimits = new Vector2(2.5f, 10f);
 
 		[Header("References")]
@@ -18,11 +19,14 @@ namespace InterviewTask
 		[SerializeField] private Camera _camera;
 
 		private float _currentZoom;
-		private Vector3 _velocity;
+		private float _zoomTarget;
+		private float _zoomVelocity;
+		private Vector3 _movementVelocity;
 
 		private void Awake()
 		{
-			_currentZoom = Mathf.Sqrt(_camera.orthographicSize);
+			_zoomTarget = Mathf.Sqrt(_camera.orthographicSize);
+			_currentZoom = _zoomTarget;
 		}
 		private void Update()
 		{
@@ -36,14 +40,15 @@ namespace InterviewTask
 			transform.position = Vector3.SmoothDamp(
 				transform.position,
 				_player.Center.ToV3(transform.position.z),
-				ref _velocity,
-				_cameraSmoothTime);
+				ref _movementVelocity,
+				_cameraMovementSmoothTime);
 		}
 		private void HandleZoom()
 		{
 			float input = Input.GetAxis("Zoom");
-			_currentZoom += input;
-			_currentZoom = Mathf.Clamp(_currentZoom, _cameraZoomLimits.x, _cameraZoomLimits.y);
+			_zoomTarget += input;
+			_zoomTarget = Mathf.Clamp(_zoomTarget, _cameraZoomLimits.x, _cameraZoomLimits.y);
+			_currentZoom = Mathf.SmoothDamp(_currentZoom, _zoomTarget, ref _zoomVelocity, _cameraZoomSmoothTime);
 
 			//Real orthographicSize is squared to have a linear feeling when zooming in and out
 			_camera.orthographicSize = _currentZoom * _currentZoom;
