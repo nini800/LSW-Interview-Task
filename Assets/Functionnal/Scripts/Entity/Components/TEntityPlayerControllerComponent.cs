@@ -49,7 +49,12 @@ namespace InterviewTask
 				moveInput.x = Input.GetAxis("Horizontal");
 				moveInput.y = Input.GetAxis("Vertical");
 
-				return moveInput.normalized;
+				//Clamp input to unit vector
+				if (moveInput.sqrMagnitude > 1f)
+				{
+					moveInput.Normalize();
+				}
+				return moveInput;
 			}
 			#endregion
 		}
