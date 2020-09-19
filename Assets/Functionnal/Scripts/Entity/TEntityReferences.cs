@@ -22,6 +22,7 @@ namespace InterviewTask
 		[Header("Visual")]
 		[Space]
 		[SerializeField] private Transform _visualBody;
+		[SerializeField] private Transform _directionArrow;
 		[SerializeField] private TextMeshPro _nameDisplay;
 
 		public Transform Body => _body;
@@ -29,6 +30,7 @@ namespace InterviewTask
 		public Rigidbody2D Rigidbody => _rigidbody;
 
 		public Transform VisualBody => _visualBody;
+		public Transform DirectionArrow => _directionArrow;
 		public TextMeshPro NameDisplay => _nameDisplay;
 		#endregion
 

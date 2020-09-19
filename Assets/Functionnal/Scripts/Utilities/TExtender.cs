@@ -75,7 +75,6 @@ namespace InterviewTask
         #endregion
 
         #region Colors
-        #region Colors
         public static Color SetA(this Color c, float a)
         {
             c.a = a;
