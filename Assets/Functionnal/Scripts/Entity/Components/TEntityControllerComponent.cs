@@ -23,17 +23,12 @@ namespace InterviewTask
 			#region Vars, Getters
 			private TEntityControllerComponent _data;
 			public new TEntityControllerComponent Data => _data;
-			#endregion
 
-			#region Behaviour
-			public override void OnFixedUpdate()
-			{
-				base.OnFixedUpdate();
-			}
-			private void HandleVelocity()
-			{
+			protected bool inputingMovement;
+			protected Vector2 moveInput;
 
-			}
+			public bool InputingMovement => inputingMovement;
+			public Vector2 MoveInput => moveInput;
 			#endregion
 		}
 	}
