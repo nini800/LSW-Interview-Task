@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace InterviewTask
 {
-	public static class TExtender
-	{
+    public static class TExtender
+    {
         #region Vector3
         public static Vector3 SetX(this Vector3 v, float x)
         {
@@ -41,10 +41,10 @@ namespace InterviewTask
         {
             return new Vector2(v.x, Z_AxisIs_Y_Axis ? v.z : v.y);
         }
-		#endregion
+        #endregion
 
-		#region Vector2
-		public static Vector2 SetX(this Vector2 v, float x)
+        #region Vector2
+        public static Vector2 SetX(this Vector2 v, float x)
         {
             v.x = x;
             return v;
@@ -74,3 +74,4 @@ namespace InterviewTask
         }
         #endregion
     }
+}
