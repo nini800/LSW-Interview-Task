@@ -12,7 +12,7 @@ namespace InterviewTask
 			return new TEntityPlayerController(this, master);
 		}
 
-		public class TEntityPlayerController : TEntityComponent
+		public class TEntityPlayerController : TEntityController
 		{
 			#region Construction
 			public TEntityPlayerController(TEntityPlayerControllerComponent data, TEntity master) : base(data, master)
@@ -27,13 +27,29 @@ namespace InterviewTask
 			#endregion
 
 			#region Behaviour
-			public override void OnFixedUpdate()
+			/// <summary>
+			/// Need base
+			/// </summary>
+			public override void OnUpdate()
 			{
-				base.OnFixedUpdate();
+				HandleMovementsInputs();
 			}
-			private void HandleVelocity()
+			private void HandleMovementsInputs()
 			{
+				moveInput = ComputeMoveInput();
+				inputingMovement = moveInput.sqrMagnitude >= Mathf.Epsilon;
+			}
+			#endregion
 
+			#region Utilities
+			private Vector2 ComputeMoveInput()
+			{
+				Vector2 moveInput = Vector2.zero;
+
+				moveInput.x = Input.GetAxis("Horizontal");
+				moveInput.y = Input.GetAxis("Vertical");
+
+				return moveInput.normalized;
 			}
 			#endregion
 		}
