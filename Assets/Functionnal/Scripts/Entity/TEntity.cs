@@ -58,6 +58,7 @@ namespace InterviewTask
 		#region Components Creation
 		private void CreateComponents()
 		{
+			//Order of lines here determines execution order of the components
 			CreateComponent(_controllerComponent, ref _controller);
 			CreateComponent(_movementsComponent, ref _movements);
 			CreateComponent(_interactionsComponent, ref _interactions);
@@ -67,6 +68,7 @@ namespace InterviewTask
 		private void CreateComponent<T, TT>(T componentData, ref TT _componentVar) where T : TEntityComponentBase where TT : TEntityComponentBase.TEntityComponent
 		{
 			_componentVar = (TT)componentData.BuildInstance(this);
+			_components.Add(_componentVar);
 		}
 		#endregion
 
