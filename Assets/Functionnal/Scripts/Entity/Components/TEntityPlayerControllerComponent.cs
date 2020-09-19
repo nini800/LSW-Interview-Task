@@ -7,10 +7,19 @@ namespace InterviewTask
 	[CreateAssetMenu(fileName = "PlayerController", menuName = "Entity/Components/PlayerController", order = 100)]
 	public class TEntityPlayerControllerComponent : TEntityControllerComponent
 	{
+		#region Fields, Getters
+		[Header("Move Input")]
+		[Space]
+		[SerializeField, Range(0f, 1f)] private float _moveInputDeadZone = 0.25f;
+
+		public float MoveInputDeadZone => _moveInputDeadZone;
+		#endregion
+		#region Component Building
 		public override TEntityComponent BuildInstance(TEntity master)
 		{
 			return new TEntityPlayerController(this, master);
 		}
+		#endregion
 
 		public class TEntityPlayerController : TEntityController
 		{
@@ -49,12 +58,32 @@ namespace InterviewTask
 				moveInput.x = Input.GetAxis("Horizontal");
 				moveInput.y = Input.GetAxis("Vertical");
 
-				//Clamp input to unit vector
-				if (moveInput.sqrMagnitude > 1f)
+				float moveInputSqrMagn = moveInput.sqrMagnitude;
+
+				//Clamp input to unit vector if it exceeds 1 of magnitude.
+				if (moveInputSqrMagn > 1f)
 				{
-					moveInput.Normalize();
+					return moveInput.normalized;
 				}
-				return moveInput;
+
+				//Manually add a magnitude based deadzone to prevent unity per-axis
+				//deadzone to make controlling our character feel weird
+				if (moveInputSqrMagn < (_data._moveInputDeadZone * _data._moveInputDeadZone))
+				{
+					return Vector2.zero;
+				}
+				else
+				{
+					float moveInputMagnitude = moveInput.magnitude;
+					float moveInputTweakedMagnitude = moveInputMagnitude;
+
+					moveInputMagnitude -= _data._moveInputDeadZone;
+					moveInputMagnitude /= (1 - _data._moveInputDeadZone);
+
+					//moveInput / moveInputMagnitude is just moveInput.normalized but we skip
+					//doing the Sqrt again.
+					return (moveInput / moveInputMagnitude) * moveInputTweakedMagnitude;
+				}
 			}
 			#endregion
 		}
