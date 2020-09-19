@@ -1,0 +1,10 @@
+*.csproj
+*.rar
+steam_appid.txt
+*.sln
+.vs/
+*.meta
+Build/
+Library/
+obj/
+Temp/
