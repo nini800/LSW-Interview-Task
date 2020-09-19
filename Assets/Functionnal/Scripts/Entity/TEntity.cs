@@ -15,9 +15,9 @@ namespace InterviewTask
 		[Space]
 		[SerializeField] private TEntityControllerComponent _controllerComponent;
 		[SerializeField] private TEntityMovementsComponent _movementsComponent;
-		[SerializeField] private TEntityMovementsComponent _interactionsComponent;
-		[SerializeField] private TEntityMovementsComponent _visualComponent;
-		[SerializeField] private TEntityMovementsComponent _animationsComponent;
+		[SerializeField] private TEntityInteractionsComponent _interactionsComponent;
+		[SerializeField] private TEntityVisualComponent _visualComponent;
+		[SerializeField] private TEntityAnimationsComponent _animationsComponent;
 
 		[Header("References")]
 		[Space]
