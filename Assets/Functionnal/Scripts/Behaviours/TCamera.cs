@@ -7,6 +7,8 @@ namespace InterviewTask
 {
 	public class TCamera : MonoBehaviour
 	{
+		public static TCamera Instance;
+
 		[Header("Parameters")]
 		[Space]
 		[SerializeField, Min(0f)] private float _cameraMovementSmoothTime = 0.1f;
@@ -27,6 +29,7 @@ namespace InterviewTask
 		{
 			_zoomTarget = Mathf.Sqrt(_camera.orthographicSize);
 			_currentZoom = _zoomTarget;
+			Instance = this;
 		}
 		private void Update()
 		{

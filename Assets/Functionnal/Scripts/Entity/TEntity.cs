@@ -6,9 +6,14 @@ namespace InterviewTask
 {
 	public class TEntity : MonoBehaviour, ITEntityData
 	{
+		#region Static
+		public static TEntity Player;
+		#endregion
+
 		#region Vars, Fields, Getters
 		[Header("Identity")]
 		[Space]
+		[SerializeField] private bool _isPlayer;
 		[SerializeField] private string _entityName;
 		[SerializeField] private float _height;
 
@@ -50,7 +55,6 @@ namespace InterviewTask
 		public Vector2 Center => _references.Body.position.ToV2().AddY(_height * 0.5f);
 		#endregion
 
-
 		#region Behaviour
 		private void Awake()
 		{
@@ -58,6 +62,12 @@ namespace InterviewTask
 			for (int i = 0; i < _components.Count; i++)
 			{
 				_components[i].OnAwake();
+			}
+
+			//In a real game, I would have made an entity manager for this kind of reference.
+			if (_isPlayer == true)
+			{
+				Player = this;
 			}
 		}
 		#region Components Creation
