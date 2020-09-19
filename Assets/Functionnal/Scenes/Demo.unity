@@ -226,7 +226,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd4866950e25e6043a1c88c88a780bd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cameraSmoothTime: 0.1
+  _cameraZoomLimits: {x: 1.5, y: 10}
   _player: {fileID: 2004993130}
+  _camera: {fileID: 519420031}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -947,6 +950,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entityName: Michael
+  _height: 3.94
   _controllerComponent: {fileID: 11400000, guid: a2965884daa2b0e4e8d19769e6d0dc2a, type: 2}
   _movementsComponent: {fileID: 11400000, guid: 0ab427d3b49c28e42922f820780b505a, type: 2}
   _interactionsComponent: {fileID: 11400000, guid: b80ee529b561b0c4ca2d769bbf71cc88, type: 2}
