@@ -8,10 +8,20 @@ namespace InterviewTask
 	[CreateAssetMenu(fileName = "EntityMovements", menuName = "Entity/Components/Movements", order = 100)]
 	public class TEntityMovementsComponent : TEntityComponentBase
 	{
+		#region Fields & Getters
+		[Header("Parameters")]
+		[Space]
+		[SerializeField] private float _moveSpeed;
+
+		public float MoveSpeed => _moveSpeed;
+		#endregion
+
+		#region Component Building
 		public override TEntityComponent BuildInstance(TEntity master)
 		{
 			return new TEntityMovements(this, master);
 		}
+		#endregion
 
 		public class TEntityMovements : TEntityComponent
 		{
@@ -30,11 +40,18 @@ namespace InterviewTask
 			#region Behaviour
 			public override void OnFixedUpdate()
 			{
-				base.OnFixedUpdate();
+				HandleMove();
 			}
-			private void HandleVelocity()
+			private void HandleMove()
 			{
-
+				if (Controller.InputingMovement == false)
+				{
+					References.Rigidbody.velocity = Vector2.zero;
+				}
+				else
+				{
+					References.Rigidbody.velocity = Controller.MoveInput * Data._moveSpeed;
+				}
 			}
 			#endregion
 		}
