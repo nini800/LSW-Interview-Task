@@ -16,7 +16,7 @@ namespace InterviewTask
 		[Space]
 		[SerializeField] private Transform _body;
 		[SerializeField] private Transform _collisions;
-		[SerializeField] private Rigidbody _rigidbody;
+		[SerializeField] private Rigidbody2D _rigidbody;
 
 		[Header("Visual")]
 		[Space]
@@ -24,7 +24,7 @@ namespace InterviewTask
 
 		public Transform Body => _body;
 		public Transform Collisions => _collisions;
-		public Rigidbody Rigidbody => _rigidbody;
+		public Rigidbody2D Rigidbody => _rigidbody;
 
 		public Transform Visual => _visual;
 		#endregion
