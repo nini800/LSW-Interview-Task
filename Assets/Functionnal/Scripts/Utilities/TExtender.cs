@@ -73,5 +73,70 @@ namespace InterviewTask
             return new Vector3(v.x, 0, v.y);
         }
         #endregion
+
+        #region Colors
+        #region Colors
+        public static Color SetA(this Color c, float a)
+        {
+            c.a = a;
+            return c;
+        }
+        public static Color SetR(this Color c, float r)
+        {
+            c.r = r;
+            return c;
+        }
+        public static Color SetG(this Color c, float g)
+        {
+            c.g = g;
+            return c;
+        }
+        public static Color SetB(this Color c, float b)
+        {
+            c.b = b;
+            return c;
+        }
+        public static Color AddA(this Color c, float a)
+        {
+            c.a += a;
+            return c;
+        }
+        public static Color AddR(this Color c, float r)
+        {
+            c.r += r;
+            return c;
+        }
+        public static Color AddG(this Color c, float g)
+        {
+            c.g += g;
+            return c;
+        }
+        public static Color AddB(this Color c, float b)
+        {
+            c.b += b;
+            return c;
+        }
+        public static Color MoveTowards(this Color current, Color target, float amount)
+        {
+            float rDist = target.r - current.r;
+            float gDist = target.g - current.g;
+            float bDist = target.b - current.b;
+            float aDist = target.a - current.a;
+            float sqrMagn = rDist * rDist + gDist * gDist + bDist * bDist + aDist * aDist;
+            if (sqrMagn != 0 && (amount < 0 || sqrMagn > amount * amount))
+            {
+                float magn = Mathf.Sqrt(sqrMagn);
+                return new Vector4(
+                    current.r + ((rDist / magn) * amount),
+                    current.g + ((gDist / magn) * amount),
+                    current.b + ((bDist / magn) * amount),
+                    current.a + ((aDist / magn) * amount));
+            }
+            else
+            {
+                return target;
+            }
+        }
+        #endregion
     }
 }
