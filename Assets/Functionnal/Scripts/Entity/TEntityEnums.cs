@@ -24,4 +24,12 @@ namespace InterviewTask
 		Interacting
 	}
 
+	public enum TBodySocket
+	{
+		Hat,
+		Shirt,
+		Pants,
+		Boots,
+	}
+
 }

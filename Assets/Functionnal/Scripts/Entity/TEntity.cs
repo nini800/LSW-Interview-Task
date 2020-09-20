@@ -16,6 +16,7 @@ namespace InterviewTask
 		[SerializeField] private bool _isPlayer;
 		[SerializeField] private string _entityName;
 		[SerializeField] private float _height;
+		[SerializeField] private int _startMoney;
 
 		[Header("Components")]
 		[Space]
@@ -29,6 +30,7 @@ namespace InterviewTask
 		[Space]
 		[SerializeField] private TEntityReferences _references;
 
+		private int _money;
 		private List<TEntityComponentBase.TEntityComponent> _components = new List<TEntityComponentBase.TEntityComponent>();
 
 		private TEntityControllerComponent.TEntityController _controller;
@@ -39,6 +41,7 @@ namespace InterviewTask
 
 		public string EntityName => _entityName;
 		public float Height => _height;
+		public int Money => _money;
 
 		public TEntityControllerComponent.TEntityController Controller => _controller;
 		public TEntityMovementsComponent.TEntityMovements Movements => _movements;
@@ -82,6 +85,10 @@ namespace InterviewTask
 			{
 				Player = this;
 			}
+
+
+			//I would have done a separate component for money in a real game
+			_money = _startMoney;
 		}
 		#region Components Creation
 		private void CreateComponents()
@@ -146,6 +153,13 @@ namespace InterviewTask
 			{
 				_components[i].OnLateUpdate();
 			}
+		}
+		#endregion
+
+		#region Utilities
+		public void AddMoney(int money)
+		{
+			_money += money;
 		}
 		#endregion
 	}

@@ -4,11 +4,7 @@ using UnityEngine;
 
 namespace InterviewTask
 {
-	public class ShirtStand : TInteractable
+	public class ShirtStand : ClothesShop
 	{
-		public override void StartInteract()
-		{
-			Invoke("StopInteract", 1f);
-		}
 	}
 }
