@@ -27,9 +27,17 @@ namespace InterviewTask
 	public enum TBodySocket
 	{
 		Hat,
-		Shirt,
-		Pants,
-		Boots,
+		Shirt_Bust,
+		Shirt_RightArm,
+		Shirt_LefttArm,
+		Pants_Pubic,
+		Pants_PubicAbove,
+		Pants_RightUpperLeg,
+		Pants_LeftUpperLeg,
+		Pants_RightLowerLeg,
+		Pants_LefttLowerLeg,
+		Shoes_Right,
+		Shoes_Left,
 	}
 
 }

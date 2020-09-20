@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,18 +8,26 @@ namespace InterviewTask
 	[CreateAssetMenu(fileName = "ClothesShopItem", menuName = "Entity/ClothesShopItem", order = 100)]
 	public class ClothesShopItem : ScriptableObject
 	{
+		[Serializable]
+		public class ItemModelParameters
+		{
+			[SerializeField] private TBodySocket _socket;
+			[SerializeField] private Sprite _sprite;
+
+			public TBodySocket Socket => _socket;
+			public Sprite Sprite => _sprite;
+		}
+
 		[Header("Parameters")]
 		[Space]
-		[SerializeField] private TBodySocket _itemSocket;
 		[SerializeField] private string _itemName;
 		[SerializeField] private Sprite _icon;
-		[SerializeField] private GameObject _itemModel;
+		[SerializeField] private ItemModelParameters[] _itemModelParams;
 		[SerializeField] private int _itemPrice;
 
-		public TBodySocket ItemSocket => _itemSocket;
 		public string ItemName => _itemName;
 		public Sprite Icon => _icon;
-		public GameObject ItemModel => _itemModel;
+		public ItemModelParameters[] ItemModelParams => _itemModelParams;
 		public int ItemPrice => _itemPrice;
 	}
 }
