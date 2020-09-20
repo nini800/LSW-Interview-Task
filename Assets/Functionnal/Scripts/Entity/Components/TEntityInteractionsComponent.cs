@@ -101,6 +101,7 @@ namespace InterviewTask
 					_selectedInteractable.OnStopInteract += OnInteractableStopInteraction;
 					_interactionState = TInteractionState.Interacting;
 					_selectedInteractable.StartInteract();
+					OnStartInteract.Invoke(Master, _selectedInteractable);
 				}
 			}
 			#endregion
@@ -115,7 +116,7 @@ namespace InterviewTask
 						OnDeselectInteractable.Invoke(Master, _selectedInteractable);
 					}
 					_selectedInteractable = interactable;
-					OnSelectInteractable.Invoke(Master, _selectedInteractable);
+					OnSelectInteractable?.Invoke(Master, _selectedInteractable);
 				}
 			}
 			private void DeselectInteractable()
@@ -131,11 +132,14 @@ namespace InterviewTask
 			#region Events
 			public event Action<TEntity, ITInteractable> OnSelectInteractable;
 			public event Action<TEntity, ITInteractable> OnDeselectInteractable;
+			public event Action<TEntity, ITInteractable> OnStartInteract;
+			public event Action<TEntity, ITInteractable> OnStopInteract;
 
 			private void OnInteractableStopInteraction(ITInteractable interactable)
 			{
 				_interactionState = TInteractionState.None;
 				interactable.OnStopInteract -= OnInteractableStopInteraction;
+				OnStopInteract?.Invoke(Master, interactable);
 			}
 			#endregion
 		}

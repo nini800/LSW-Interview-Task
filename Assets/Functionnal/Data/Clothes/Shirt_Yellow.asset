@@ -16,10 +16,10 @@ MonoBehaviour:
   _itemName: Yellow Shirt
   _icon: {fileID: 21300000, guid: 2015e28c85829d84cac85b9a91e91990, type: 3}
   _itemModelParams:
-  - _socket: 1
-    _sprite: {fileID: 21300000, guid: 09257ceb80e238148bf04f8cbd2a73d8, type: 3}
   - _socket: 2
-    _sprite: {fileID: 21300000, guid: be5d46df5a38faf41a39343e8bef4281, type: 3}
+    _sprite: {fileID: 21300000, guid: 09257ceb80e238148bf04f8cbd2a73d8, type: 3}
   - _socket: 3
+    _sprite: {fileID: 21300000, guid: be5d46df5a38faf41a39343e8bef4281, type: 3}
+  - _socket: 4
     _sprite: {fileID: 21300000, guid: be5d46df5a38faf41a39343e8bef4281, type: 3}
   _itemPrice: 523

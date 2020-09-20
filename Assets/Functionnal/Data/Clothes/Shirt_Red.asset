@@ -16,10 +16,10 @@ MonoBehaviour:
   _itemName: Red Shirt
   _icon: {fileID: 21300000, guid: d516a3723c86a0c419efb67046a3b734, type: 3}
   _itemModelParams:
-  - _socket: 1
-    _sprite: {fileID: 21300000, guid: e59cd9b963f7bc143ae6de58a7b4131e, type: 3}
   - _socket: 2
-    _sprite: {fileID: 21300000, guid: 83a036df532759441bfda25edec6d1e3, type: 3}
+    _sprite: {fileID: 21300000, guid: e59cd9b963f7bc143ae6de58a7b4131e, type: 3}
   - _socket: 3
+    _sprite: {fileID: 21300000, guid: 83a036df532759441bfda25edec6d1e3, type: 3}
+  - _socket: 4
     _sprite: {fileID: 21300000, guid: 83a036df532759441bfda25edec6d1e3, type: 3}
   _itemPrice: 14

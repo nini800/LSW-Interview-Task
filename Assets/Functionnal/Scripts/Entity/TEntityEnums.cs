@@ -38,6 +38,7 @@ namespace InterviewTask
 	public enum TBodySocket
 	{
 		Hat,
+		Hairs,
 		Shirt_Bust,
 		Shirt_RightArm,
 		Shirt_LefttArm,

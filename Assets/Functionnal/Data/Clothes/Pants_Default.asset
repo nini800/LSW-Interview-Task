@@ -16,16 +16,16 @@ MonoBehaviour:
   _itemName: Default Pants
   _icon: {fileID: 21300000, guid: b0d47f6716f322e4498b41d282d81caf, type: 3}
   _itemModelParams:
-  - _socket: 4
-    _sprite: {fileID: 21300000, guid: 7cb61f2234a146d469f2c99dbdf8e009, type: 3}
   - _socket: 5
-    _sprite: {fileID: 21300000, guid: a1041b357ae2efb41a0eaf1c928b06e0, type: 3}
+    _sprite: {fileID: 21300000, guid: 7cb61f2234a146d469f2c99dbdf8e009, type: 3}
   - _socket: 6
+    _sprite: {fileID: 21300000, guid: a1041b357ae2efb41a0eaf1c928b06e0, type: 3}
+  - _socket: 7
     _sprite: {fileID: 21300000, guid: bd1de573ce0d08c4c9ea91ffc40d65c8, type: 3}
+  - _socket: 9
+    _sprite: {fileID: 21300000, guid: 237e61614db576d4b90e886e3cf4abc0, type: 3}
   - _socket: 8
     _sprite: {fileID: 21300000, guid: bd1de573ce0d08c4c9ea91ffc40d65c8, type: 3}
-  - _socket: 7
+  - _socket: 10
     _sprite: {fileID: 21300000, guid: 237e61614db576d4b90e886e3cf4abc0, type: 3}
-  - _socket: 9
-    _sprite: {fileID: 21300000, guid: bd1de573ce0d08c4c9ea91ffc40d65c8, type: 3}
   _itemPrice: 0

@@ -16,8 +16,8 @@ MonoBehaviour:
   _itemName: Purple Shoes
   _icon: {fileID: 21300000, guid: 9516960120c98704c80c300bab5e514f, type: 3}
   _itemModelParams:
-  - _socket: 10
-    _sprite: {fileID: 21300000, guid: 4ceb763dd5ed33f4db5cb4a0a445f70d, type: 3}
   - _socket: 11
-    _sprite: {fileID: 21300000, guid: 4ceb763dd5ed33f4db5cb4a0a445f70d, type: 3}
+    _sprite: {fileID: 21300000, guid: 682ea3403f100244c9eb6cbe2ec4d349, type: 3}
+  - _socket: 12
+    _sprite: {fileID: 21300000, guid: 682ea3403f100244c9eb6cbe2ec4d349, type: 3}
   _itemPrice: 72

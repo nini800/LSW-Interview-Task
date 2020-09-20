@@ -24,12 +24,14 @@ namespace InterviewTask
 		[SerializeField] private string _itemName;
 		[SerializeField] private Sprite _icon;
 		[SerializeField] private ItemModelParameters[] _itemModelParams;
+		[SerializeField] private bool _hideHairs = false;
 		[SerializeField] private int _itemPrice;
 
 		public TClothType ClothType => _clothType;
 		public string ItemName => _itemName;
 		public Sprite Icon => _icon;
 		public ItemModelParameters[] ItemModelParams => _itemModelParams;
+		public bool HideHairs => _hideHairs;
 		public int ItemPrice => _itemPrice;
 	}
 }

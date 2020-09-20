@@ -91,6 +91,23 @@ namespace InterviewTask
 				}
 			}
 			#endregion
+
+			#region Events
+			public override void OnEnable()
+			{
+				Interactions.OnStartInteract += OnStartInteract;
+			}
+			public override void OnDisable()
+			{
+				Interactions.OnStartInteract -= OnStartInteract;
+			}
+
+			private void OnStartInteract(TEntity master, ITInteractable interactable)
+			{
+				References.Rigidbody.velocity = Vector2.zero;
+				_movementDirection = TMovementDirection.None;
+			}
+			#endregion
 		}
 	}
 }

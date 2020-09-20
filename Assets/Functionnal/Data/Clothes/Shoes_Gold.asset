@@ -16,8 +16,8 @@ MonoBehaviour:
   _itemName: Golden Shoes
   _icon: {fileID: 21300000, guid: 89078d70a9ddf0946b67a8be238343c2, type: 3}
   _itemModelParams:
-  - _socket: 10
-    _sprite: {fileID: 21300000, guid: 4ceb763dd5ed33f4db5cb4a0a445f70d, type: 3}
   - _socket: 11
-    _sprite: {fileID: 21300000, guid: 4ceb763dd5ed33f4db5cb4a0a445f70d, type: 3}
+    _sprite: {fileID: 21300000, guid: ed643f752a837e34396dcdfffdd6cdcc, type: 3}
+  - _socket: 12
+    _sprite: {fileID: 21300000, guid: ed643f752a837e34396dcdfffdd6cdcc, type: 3}
   _itemPrice: 500

@@ -65,7 +65,19 @@ namespace InterviewTask
 		{
 			for (int i = 0; i < _storedEquippedItems.Length; i++)
 			{
-				EquipItem(_storedEquippedItems[i]);
+				if (_storedEquippedItems[i] != null)
+				{
+					EquipItem(_storedEquippedItems[i]);
+				}
+				else if (_equippedItems[i] != null)
+				{
+					for (int j = 0; j < _equippedItems[i].ItemModelParams.Length; j++)
+					{
+						int socketIndex = (int)_equippedItems[i].ItemModelParams[j].Socket;
+						_bodySockets[socketIndex].SpriteRenderer.sprite = null;
+					}
+					_equippedItems[i] = null;
+				}
 			}
 		}
 
@@ -81,6 +93,18 @@ namespace InterviewTask
 				int socketIndex = (int)item.ItemModelParams[i].Socket;
 				_bodySockets[socketIndex].SpriteRenderer.sprite = item.ItemModelParams[i].Sprite;
 			}
+
+			//Check if we must hide hairs
+			for (int i = 0; i < _equippedItems.Length; i++)
+			{
+				if (_equippedItems[i] == null) { continue; }
+				if (_equippedItems[i].HideHairs == true)
+				{
+					_bodySockets[(int)TBodySocket.Hairs].SpriteRenderer.enabled = false;
+					return;
+				}
+			}
+			_bodySockets[(int)TBodySocket.Hairs].SpriteRenderer.enabled = true;
 		}
 
 		#region Editor
