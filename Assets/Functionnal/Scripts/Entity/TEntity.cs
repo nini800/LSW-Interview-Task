@@ -45,6 +45,19 @@ namespace InterviewTask
 		public TEntityInteractionsComponent.TEntityInteractions Interactions => _interactions;
 		public TEntityVisualComponent.TEntityVisual Visual => _visual;
 		public TEntityAnimationsComponent.TEntityAnimations Animations => _animations;
+
+		public bool CanPerformActions
+		{
+			get
+			{
+				if (Interactions.InteractionState == TInteractionState.Interacting)
+				{
+					return false;
+				}
+
+				return true;
+			}
+		}
 		#endregion
 
 		#region ITEntityData

@@ -12,3 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2234bfb36e5f68e47b4595edea929335, type: 3}
   m_Name: PlayerInteractions
   m_EditorClassIdentifier: 
+  _whatIsInteractable:
+    serializedVersion: 2
+    m_Bits: 512
+  _interactionDistance: 1
+  _interactionDirectionRotateSmoothTime: 0.05
+  _interactionAngle: 1

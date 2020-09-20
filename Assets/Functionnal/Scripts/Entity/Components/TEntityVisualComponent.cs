@@ -51,10 +51,58 @@ namespace InterviewTask
 			{
 				if (References.DirectionArrow == null) { return; }
 
-				References.DirectionArrow.transform.rotation = Quaternion.Euler(0f, 0f, Interactions.CurrentInteractingAngle - 90f);
+				References.DirectionArrow.transform.rotation = Quaternion.Euler(0f, 0f, Interactions.CurrentInteractionAngle - 90f);
 
-				float currentAngleRad = Interactions.CurrentInteractingAngle * Mathf.Deg2Rad;
+				float currentAngleRad = Interactions.CurrentInteractionAngle * Mathf.Deg2Rad;
 				References.DirectionArrow.transform.localPosition = new Vector2(Mathf.Cos(currentAngleRad), Mathf.Sin(currentAngleRad)) * _data._directionArrowDistance;
+			}
+			#endregion
+
+			#region Events
+			public override void OnEnable()
+			{
+				Interactions.OnSelectInteractable += OnSelectInteractable;
+				Interactions.OnDeselectInteractable += OnDeselectInteractable;
+			}
+			public override void OnDisable()
+			{
+				Interactions.OnSelectInteractable -= OnSelectInteractable;
+				Interactions.OnDeselectInteractable -= OnDeselectInteractable;
+			}
+
+			private const string SELECTION_DISPLAYER_NAME = "SelectionDisplay";
+			private void OnSelectInteractable(TEntity master, ITInteractable interactable)
+			{
+				interactable.Widget.SetActive(true);
+
+				//I would never have not done that on a true project.
+				for (int i = 0; i < interactable.SpriteRenderers.Length; i++)
+				{
+					GameObject selectionDisplay = new GameObject(SELECTION_DISPLAYER_NAME);
+					selectionDisplay.transform.SetParent(interactable.SpriteRenderers[i].transform);
+					selectionDisplay.transform.localPosition = default;
+					selectionDisplay.transform.localRotation = default;
+					selectionDisplay.transform.localScale = Vector3.one * 1.05f;
+					SpriteRenderer rend = selectionDisplay.AddComponent<SpriteRenderer>();
+					rend.sprite = interactable.SpriteRenderers[i].sprite;
+					rend.color = Color.black;
+					TSpriteOrderer orderer = selectionDisplay.AddComponent<TSpriteOrderer>();
+					orderer.SetOrderInLayerForcedOffset(-1);
+				}
+			}
+			private void OnDeselectInteractable(TEntity master, ITInteractable interactable)
+			{
+				interactable.Widget.SetActive(false);
+
+				//I would have not done that on a true project.
+				for (int i = 0; i < interactable.SpriteRenderers.Length; i++)
+				{
+					Transform t = interactable.SpriteRenderers[i].transform.Find(SELECTION_DISPLAYER_NAME);
+					if (t != null)
+					{
+						Destroy(t.gameObject);
+					}
+				}
 			}
 			#endregion
 		}

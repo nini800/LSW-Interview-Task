@@ -14,6 +14,8 @@ namespace InterviewTask
 		[SerializeField, Min(0f)] private float _cameraMovementSmoothTime = 0.1f;
 		[SerializeField, Min(0f)] private float _cameraZoomSmoothTime = 0.1f;
 		[SerializeField] private Vector2 _cameraZoomLimits = new Vector2(2.5f, 10f);
+		[Space]
+		[SerializeField] private float _cameraZoomOnInteracting = 2f;
 
 		[Header("References")]
 		[Space]
@@ -48,10 +50,20 @@ namespace InterviewTask
 		}
 		private void HandleZoom()
 		{
-			float input = Input.GetAxis("Zoom");
-			_zoomTarget += input;
-			_zoomTarget = Mathf.Clamp(_zoomTarget, _cameraZoomLimits.x, _cameraZoomLimits.y);
-			_currentZoom = Mathf.SmoothDamp(_currentZoom, _zoomTarget, ref _zoomVelocity, _cameraZoomSmoothTime);
+			float currentTarget;
+			if (_player.Interactions.InteractionState == TInteractionState.None)
+			{
+				float input = Input.GetAxis("Zoom");
+				_zoomTarget += input;
+				_zoomTarget = Mathf.Clamp(_zoomTarget, _cameraZoomLimits.x, _cameraZoomLimits.y);
+				currentTarget = _zoomTarget;
+			}
+			else
+			{
+				currentTarget = _cameraZoomOnInteracting;
+			}
+
+			_currentZoom = Mathf.SmoothDamp(_currentZoom, currentTarget, ref _zoomVelocity, _cameraZoomSmoothTime);
 
 			//Real orthographicSize is squared to have a linear feeling when zooming in and out
 			_camera.orthographicSize = _currentZoom * _currentZoom;

@@ -42,11 +42,16 @@ namespace InterviewTask
 			public override void OnUpdate()
 			{
 				HandleMovementsInputs();
+				HandleInteractionInputs();
 			}
 			private void HandleMovementsInputs()
 			{
 				moveInput = ComputeMoveInput();
 				inputingMovement = moveInput.sqrMagnitude >= Mathf.Epsilon;
+			}
+			private void HandleInteractionInputs()
+			{
+				interact = Input.GetButton("Interact");
 			}
 			#endregion
 

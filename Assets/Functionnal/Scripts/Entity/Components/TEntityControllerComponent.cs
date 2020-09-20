@@ -27,8 +27,12 @@ namespace InterviewTask
 			protected bool inputingMovement;
 			protected Vector2 moveInput;
 
+			protected bool interact;
+
 			public bool InputingMovement => inputingMovement;
 			public Vector2 MoveInput => moveInput;
+
+			public bool Interact => interact;
 			#endregion
 		}
 	}

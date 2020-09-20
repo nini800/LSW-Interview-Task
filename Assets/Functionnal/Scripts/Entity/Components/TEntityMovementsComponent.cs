@@ -40,6 +40,8 @@ namespace InterviewTask
 			#region Behaviour
 			public override void OnFixedUpdate()
 			{
+				if (Master.CanPerformActions == false) { return; }
+
 				HandleMove();
 			}
 			private void HandleMove()

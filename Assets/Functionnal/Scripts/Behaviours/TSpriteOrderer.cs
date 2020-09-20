@@ -15,6 +15,7 @@ namespace InterviewTask
 		[Header("Parameters")]
 		[Space]
 		[SerializeField] private float _yPivotOffset = 0f;
+		[SerializeField] private int _orderInLayerForcedOffset = 0;
 		[Space]
 		[SerializeField] private bool _shouldFadeWhenPlayerAbove = false;
 		[SerializeField] private Vector2 _fadeRange = new Vector2(0.05f, 1f);
@@ -31,6 +32,7 @@ namespace InterviewTask
 		#region Behaviour
 		private void Awake()
 		{
+			if (_spriteRenderer == null) { _spriteRenderer = GetComponent<SpriteRenderer>(); }
 			_originalAlpha = _spriteRenderer.color.a;
 		}
 		private void Update()
@@ -56,7 +58,7 @@ namespace InterviewTask
 		{
 			float yDiff = camPos.y - transform.position.y - _yPivotOffset;
 			yDiff *= 100f;//So one unity unit will be one orderInLayer
-			_spriteRenderer.sortingOrder = (int)yDiff;
+			_spriteRenderer.sortingOrder = (int)yDiff + _orderInLayerForcedOffset;
 		}
 		private void UpdateFade()
 		{
@@ -87,6 +89,13 @@ namespace InterviewTask
 			_spriteRenderer.color = _spriteRenderer.color.MoveTowards(
 				target,
 				_fadeSpeed * Time.deltaTime);
+		}
+		#endregion
+
+		#region Utilities
+		public void SetOrderInLayerForcedOffset(int offset)
+		{
+			_orderInLayerForcedOffset = offset;
 		}
 		#endregion
 
