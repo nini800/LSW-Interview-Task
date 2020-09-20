@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84d90253acc4db54b8037c1d99ab5aeb, type: 3}
+  m_Name: Pants_Orange
+  m_EditorClassIdentifier: 
+  _clothType: 2
+  _itemName: Orange Pants
+  _icon: {fileID: 21300000, guid: 03414e8df2d778e4285ec86e366ec860, type: 3}
+  _itemModelParams:
+  - _socket: 4
+    _sprite: {fileID: 21300000, guid: 7cb61f2234a146d469f2c99dbdf8e009, type: 3}
+  - _socket: 5
+    _sprite: {fileID: 21300000, guid: a1041b357ae2efb41a0eaf1c928b06e0, type: 3}
+  - _socket: 6
+    _sprite: {fileID: 21300000, guid: bd1de573ce0d08c4c9ea91ffc40d65c8, type: 3}
+  - _socket: 8
+    _sprite: {fileID: 21300000, guid: bd1de573ce0d08c4c9ea91ffc40d65c8, type: 3}
+  - _socket: 7
+    _sprite: {fileID: 21300000, guid: 237e61614db576d4b90e886e3cf4abc0, type: 3}
+  - _socket: 9
+    _sprite: {fileID: 21300000, guid: bd1de573ce0d08c4c9ea91ffc40d65c8, type: 3}
+  _itemPrice: 14
