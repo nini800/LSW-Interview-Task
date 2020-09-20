@@ -46,6 +46,8 @@ namespace InterviewTask
 
 			ResetWindow();
 			InitializeWindow();
+
+			TEntity.Player.References.EntityBody.StartEquipPreview();
 		}
 		public void CloseShop()
 		{
@@ -54,15 +56,18 @@ namespace InterviewTask
 			Close();
 
 			ResetWindow();
+			TEntity.Player.References.EntityBody.StopEquipPreview();
 		}
 		public void BuyAndCloseShop()
 		{
 			if (_selectedItem != null && TEntity.Player.Money >= _selectedItem.ItemPrice)
 			{
-				//TODO: Apply Item on Player
+				ClothesShopItem itemToEquip = _selectedItem;
+				TEntity.Player.AddMoney(-itemToEquip.ItemPrice);
 
-				TEntity.Player.AddMoney(-_selectedItem.ItemPrice);
 				CloseShop();
+
+				TEntity.Player.References.EntityBody.EquipItem(itemToEquip);
 			}
 			else
 			{
@@ -126,6 +131,9 @@ namespace InterviewTask
 
 				//Store the selected item in case we buy it
 				_selectedItem = _openingShop.ShopItems[itemId];
+
+				//Finally, preview it on the player
+				TEntity.Player.References.EntityBody.EquipItem(_openingShop.ShopItems[itemId]);
 			}
 		}
 		#endregion

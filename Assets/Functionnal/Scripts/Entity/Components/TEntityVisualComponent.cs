@@ -26,6 +26,8 @@ namespace InterviewTask
 			#endregion
 
 			#region Vars, Getters
+			private bool _flipped = false;
+
 			private TEntityVisualComponent _data;
 			public new TEntityVisualComponent Data => _data;
 			#endregion
@@ -46,6 +48,7 @@ namespace InterviewTask
 			public override void OnUpdate()
 			{
 				HandleRotateDirectionArrow();
+				HandleFlipBody();
 			}
 			private void HandleRotateDirectionArrow()
 			{
@@ -55,6 +58,25 @@ namespace InterviewTask
 
 				float currentAngleRad = Interactions.CurrentInteractionAngle * Mathf.Deg2Rad;
 				References.DirectionArrow.transform.localPosition = new Vector2(Mathf.Cos(currentAngleRad), Mathf.Sin(currentAngleRad)) * _data._directionArrowDistance;
+			}
+			private void HandleFlipBody()
+			{
+				if (_flipped == false &&
+					Movements.MovementDirection == TMovementDirection.UpRight ||
+					Movements.MovementDirection == TMovementDirection.Right ||
+					Movements.MovementDirection == TMovementDirection.DownRight)
+				{
+					References.EntityBody.transform.localScale = Vector3.one.SetX(-1f);
+					_flipped = true;
+				}
+				else if (_flipped == true &&
+						Movements.MovementDirection == TMovementDirection.UpLeft ||
+						Movements.MovementDirection == TMovementDirection.Left ||
+						Movements.MovementDirection == TMovementDirection.DownLeft)
+				{
+					References.EntityBody.transform.localScale = Vector3.one;
+					_flipped = false;
+				}
 			}
 			#endregion
 

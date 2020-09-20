@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84d90253acc4db54b8037c1d99ab5aeb, type: 3}
-  m_Name: Shirt_Red
+  m_Name: Shirt_Green
   m_EditorClassIdentifier: 
   _clothType: 1
-  _itemName: Red Shirt
-  _icon: {fileID: 21300000, guid: d516a3723c86a0c419efb67046a3b734, type: 3}
+  _itemName: Green Shirt
+  _icon: {fileID: 21300000, guid: a8b37edbb3ff13e4abf7000c0daf6bfc, type: 3}
   _itemModelParams:
   - _socket: 1
-    _sprite: {fileID: 21300000, guid: e59cd9b963f7bc143ae6de58a7b4131e, type: 3}
+    _sprite: {fileID: 21300000, guid: 87f16d04b31e1694fb6ec0b0d2e699a3, type: 3}
   - _socket: 2
-    _sprite: {fileID: 21300000, guid: 83a036df532759441bfda25edec6d1e3, type: 3}
+    _sprite: {fileID: 21300000, guid: dbf58cff2b75d2645b4c79acb991d987, type: 3}
   - _socket: 3
-    _sprite: {fileID: 21300000, guid: 83a036df532759441bfda25edec6d1e3, type: 3}
-  _itemPrice: 14
+    _sprite: {fileID: 21300000, guid: dbf58cff2b75d2645b4c79acb991d987, type: 3}
+  _itemPrice: 632

@@ -14,9 +14,13 @@ namespace InterviewTask
 	{
 		None,
 		Right,
+		UpRight,
 		Up,
+		UpLeft,
 		Left,
-		Down
+		DownLeft,
+		Down,
+		DownRight
 	}
 	public enum TInteractionState
 	{
@@ -24,6 +28,13 @@ namespace InterviewTask
 		Interacting
 	}
 
+	public enum TClothType
+	{
+		Hat,
+		Shirt,
+		Pants,
+		Shoes
+	}
 	public enum TBodySocket
 	{
 		Hat,

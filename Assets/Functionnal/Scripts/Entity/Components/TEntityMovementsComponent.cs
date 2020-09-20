@@ -35,6 +35,10 @@ namespace InterviewTask
 			#region Vars, Getters
 			private TEntityMovementsComponent _data;
 			public new TEntityMovementsComponent Data => _data;
+
+			private TMovementDirection _movementDirection = TMovementDirection.None;
+
+			public TMovementDirection MovementDirection => _movementDirection;
 			#endregion
 
 			#region Behaviour
@@ -43,6 +47,7 @@ namespace InterviewTask
 				if (Master.CanPerformActions == false) { return; }
 
 				HandleMove();
+				HandleComputeMoveDirection();
 			}
 			private void HandleMove()
 			{
@@ -53,6 +58,36 @@ namespace InterviewTask
 				else
 				{
 					References.Rigidbody.velocity = Controller.MoveInput * Data._moveSpeed;
+				}
+			}
+			private void HandleComputeMoveDirection()
+			{
+				if (Controller.InputingMovement == false)
+				{
+					_movementDirection = TMovementDirection.None;
+				}
+				else
+				{
+					//Get the angle
+					Vector2 moveDir = Controller.MoveInput.normalized;
+					float moveAngle = (moveDir.y < 0 ? -Mathf.Acos(moveDir.x) : Mathf.Acos(moveDir.x));
+
+					//To prevent negative angle
+					if (moveAngle <= 0f) { moveAngle += Mathf.PI * 2f; }
+					//To prevent above 2PI angle
+					moveAngle %= Mathf.PI * 2f;
+
+					//So we have angleStep = 1 / 8 of 2PI, and we have 8 possible directions
+					float angleStep = Mathf.PI / 4f;
+
+					//Now moveAngle will have 0 if we are going right, 1 if upright, 2 if up, etc.
+					moveAngle /= angleStep;
+
+					//We add +1 because of TMovementDirection.None taking the ID 0
+					int movementDirectionIndex = Mathf.FloorToInt(moveAngle) + 1;
+
+					//Finally, assign the movement direction
+					_movementDirection = (TMovementDirection)movementDirectionIndex;
 				}
 			}
 			#endregion

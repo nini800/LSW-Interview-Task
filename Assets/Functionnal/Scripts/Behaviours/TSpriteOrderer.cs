@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -25,6 +26,7 @@ namespace InterviewTask
 		[Header("References")]
 		[Space]
 		[SerializeField] private SpriteRenderer _spriteRenderer;
+		[SerializeField] private SortingGroup _sortingGroup;
 
 		private float _originalAlpha = 1f;
 		#endregion
@@ -33,6 +35,7 @@ namespace InterviewTask
 		private void Awake()
 		{
 			if (_spriteRenderer == null) { _spriteRenderer = GetComponent<SpriteRenderer>(); }
+			if (_spriteRenderer == null) { return; }
 			_originalAlpha = _spriteRenderer.color.a;
 		}
 		private void Update()
@@ -58,7 +61,14 @@ namespace InterviewTask
 		{
 			float yDiff = camPos.y - transform.position.y - _yPivotOffset;
 			yDiff *= 100f;//So one unity unit will be one orderInLayer
-			_spriteRenderer.sortingOrder = (int)yDiff + _orderInLayerForcedOffset;
+			if (_spriteRenderer != null)
+			{
+				_spriteRenderer.sortingOrder = (int)yDiff + _orderInLayerForcedOffset;
+			}
+			else if (_sortingGroup != null)
+			{
+				_sortingGroup.sortingOrder = (int)yDiff + _orderInLayerForcedOffset;
+			}
 		}
 		private void UpdateFade()
 		{

@@ -23,7 +23,37 @@ namespace InterviewTask
 
 			#region Vars, Getters
 			private TEntityAnimationsComponent _data;
+			private string _currentAnimation;
 			public new TEntityAnimationsComponent Data => _data;
+			#endregion
+
+			#region Behaviour
+			public override void OnUpdate()
+			{
+				HandleMovementAnimations();
+			}
+			private void HandleMovementAnimations()
+			{
+				if (Movements.MovementDirection == TMovementDirection.None)
+				{
+					PlayAnimation("Idle");
+				}
+				else
+				{
+					PlayAnimation("Walk");
+				}
+			}
+			#endregion
+
+			#region Utilities
+			private void PlayAnimation(string animationName)
+			{
+				if (_currentAnimation != animationName)
+				{ 
+					_currentAnimation = animationName;
+					References.EntityBody.PlayAnimation(_currentAnimation);
+				}
+			}
 			#endregion
 		}
 	}

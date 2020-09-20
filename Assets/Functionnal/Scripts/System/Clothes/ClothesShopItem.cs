@@ -20,11 +20,13 @@ namespace InterviewTask
 
 		[Header("Parameters")]
 		[Space]
+		[SerializeField] private TClothType _clothType;
 		[SerializeField] private string _itemName;
 		[SerializeField] private Sprite _icon;
 		[SerializeField] private ItemModelParameters[] _itemModelParams;
 		[SerializeField] private int _itemPrice;
 
+		public TClothType ClothType => _clothType;
 		public string ItemName => _itemName;
 		public Sprite Icon => _icon;
 		public ItemModelParameters[] ItemModelParams => _itemModelParams;
